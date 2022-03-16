@@ -40,12 +40,18 @@
   margin: 0;
   line-height: 1.15;
   font-size: 3rem;
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
 }
 
 .description {
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
+  @media screen and (max-width: 768px) {
+    font-size: 1.25rem;
+  }
   a {
     color: #0070f3;
     text-decoration: none;
