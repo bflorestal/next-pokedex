@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 
-const MainContext = createContext();
+const MainContext = createContext({ value: "" });
 
 const Provider = ({ children }) => {
   const [isLoading, setLoading] = useState(true);
   const [hasError, setError] = useState(false);
   const [data, setData] = useState([]);
+  const [value, setValue] = useState("");
 
   const fetchApi = async () => {
     try {
@@ -29,7 +30,7 @@ const Provider = ({ children }) => {
   }, []);
 
   return (
-    <MainContext.Provider value={{ data, hasError, isLoading }}>
+    <MainContext.Provider value={{ data, hasError, isLoading, value }}>
       {children}
     </MainContext.Provider>
   );
