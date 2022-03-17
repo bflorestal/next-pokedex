@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import { Header } from "../components/molecules";
+import { Footer, Header } from "../components/molecules";
 
 import styles from "../styles/Home.module.scss";
 
@@ -37,9 +37,7 @@ export default function Home() {
         </p>
       </main>
 
-      <footer className={styles.footer}>
-        <p>© Bryan Florestal 2022 - Tous droits réservés</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
