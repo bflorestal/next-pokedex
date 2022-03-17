@@ -21,6 +21,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <header className={styles.header}>
+        <section className={styles.header__content}>
+          <div className={styles.brand}>
+            <Link href="/">
+              <a className={styles.brand__link}>Next Pokédex</a>
+            </Link>
+          </div>
+          <nav className={styles.menu}>
+            <ul className={styles.menu__list}>
+              <li className={styles.menu__item}>
+                <Link href="/pokedex">
+                  <a className={styles.menu__link}>Pokédex</a>
+                </Link>
+              </li>
+              <li className={styles.menu__item}>
+                <Link href="/favoris">
+                  <a className={styles.menu__link}>Favoris</a>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </section>
+      </header>
+
       <main className={styles.main}>
         <h1 className={styles.title}>Bienvenue sur mon Pokédex en Next.js !</h1>
 
