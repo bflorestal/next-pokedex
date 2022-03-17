@@ -4,16 +4,14 @@ import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { Footer, Form, Header } from "../components/molecules";
+import { Loading } from "../components/atoms";
 
 import styles from "../styles/Pokedex.module.scss";
 
 export default function Pokedex() {
   const { data, hasError, isLoading } = useContext(MainContext);
-
-  /*
-  const router = useRouter();
-  console.log(router.query); // search: "Pikachu"
-  */
+  /* const router = useRouter();
+  console.log(router.query); // search: "Pikachu" */
 
   if (hasError) return <p>Une erreur est survenue...</p>;
 
@@ -45,7 +43,7 @@ export default function Pokedex() {
 
         <Form />
 
-        {isLoading ? <p>Loading...</p> : <>Hello World!</>}
+        {isLoading ? <Loading /> : <>Hello World!</>}
       </main>
 
       <Footer />
