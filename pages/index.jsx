@@ -42,6 +42,12 @@ export default function Home() {
               </li>
             </ul>
           </nav>
+          <button className={styles.header__icon}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </section>
       </header>
 
