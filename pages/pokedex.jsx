@@ -3,13 +3,13 @@ import MainContext from "../contexts/Main";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { Footer, Form, Header } from "../components/molecules";
+import { Footer, Form, Header, PokemonList } from "../components/molecules";
 import { Loading } from "../components/atoms";
 
 import styles from "../styles/Pokedex.module.scss";
 
 export default function Pokedex() {
-  const { data, hasError, isLoading } = useContext(MainContext);
+  const { filteredData, hasError, isLoading } = useContext(MainContext);
   /* const router = useRouter();
   console.log(router.query); // search: "Pikachu" */
 
@@ -43,7 +43,7 @@ export default function Pokedex() {
 
         <Form />
 
-        {isLoading ? <Loading /> : <>Hello World!</>}
+        {isLoading ? <Loading /> : <PokemonList data={filteredData} />}
       </main>
 
       <Footer />

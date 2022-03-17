@@ -10,7 +10,7 @@ const path = require("path");
 
 module.exports = {
   images: {
-    domains: ["raw.githubusercontent.com"],
+    domains: ["pokeapi.co", "raw.githubusercontent.com"],
   },
   nextConfig,
   reactStrictMode: true,

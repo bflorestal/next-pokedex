@@ -1,3 +1,4 @@
+import Card from "./Card";
 import Loading from "./Loading";
 
-export { Loading };
+export { Card, Loading };

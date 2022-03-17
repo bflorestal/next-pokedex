@@ -6,6 +6,10 @@ const Provider = ({ children }) => {
   const [isLoading, setLoading] = useState(true);
   const [hasError, setError] = useState(false);
   const [data, setData] = useState([]);
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  // const [value, setValue] = useState(searchParams.get("filter") || "");
   const [value, setValue] = useState("");
 
   const fetchApi = async () => {
@@ -17,6 +21,12 @@ const Provider = ({ children }) => {
 
       setData(data);
       setLoading(false);
+
+      setFilteredData(
+        data.results.filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(value.toLowerCase())
+        )
+      );
 
       return data;
     } catch (err) {
@@ -30,7 +40,9 @@ const Provider = ({ children }) => {
   }, []);
 
   return (
-    <MainContext.Provider value={{ data, hasError, isLoading, value }}>
+    <MainContext.Provider
+      value={{ data, filteredData, hasError, isLoading, value }}
+    >
       {children}
     </MainContext.Provider>
   );
