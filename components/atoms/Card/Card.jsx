@@ -33,10 +33,16 @@ export default function Card({ name, url }) {
 
   return (
     <li className={styles.item}>
-      <Link href={`/liste/${name}`}>
+      <Link href={`/pokedex/${name}`}>
         <a>
           <div>
-            <Image src={pkmnSprite} alt={pkmnName} width={96} height={96} />
+            <Image
+              src={pkmnSprite}
+              alt={pkmnName}
+              width={96}
+              height={96}
+              unoptimized
+            />
             <p>{pkmnName}</p>
           </div>
         </a>
