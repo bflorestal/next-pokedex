@@ -1,9 +1,15 @@
+import Head from "next/head";
 import Link from "next/link";
+
 import styles from "../styles/ErrorPage.module.scss";
 
 const Custom404 = () => {
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Page non trouvée | Next Pokédex</title>
+      </Head>
+
       <main className={styles.main}>
         <h1>Oups !</h1>
         <h2>La page que vous recherchez semble introuvable.</h2>
