@@ -14,8 +14,9 @@ const Provider = ({ children }) => {
 
   const fetchApi = async () => {
     try {
+      // https://pokeapi.co/api/v2/pokemon/?limit=1118 pour la liste complète, mais réduit à cause de la limite d'images de Vercel
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/?limit=1118"
+        "https://pokeapi.co/api/v2/pokemon/?limit=971"
       );
       const data = await response.json();
 
