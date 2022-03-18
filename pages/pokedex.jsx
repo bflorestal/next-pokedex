@@ -18,7 +18,7 @@ export default function Pokedex() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Next Pokédex</title>
+        <title>Liste des Pokémon | Next Pokédex</title>
         <meta
           name="description"
           content="Pokédex en Next.js avec la liste des Pokémon, leurs caractéristiques ainsi que la liste des types."
@@ -28,10 +28,7 @@ export default function Pokedex() {
           content="Pokedex, pokedex, nextjs, react, reactjs, pokemon"
         />
         <meta name="creator" content="Bryan Florestal" />
-        <meta
-          property="og:site_name"
-          content="Liste des Pokémon | Next Pokédex"
-        ></meta>
+        <meta property="og:site_name" content="Next Pokédex"></meta>
         <meta name="theme-color" content="#483d8b" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
