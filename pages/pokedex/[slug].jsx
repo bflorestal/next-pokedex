@@ -41,7 +41,6 @@ export default function Details({ data, pkmnNotFound }) {
           content={`Pokedex, pokedex, ${name}, nextjs, react, reactjs, pokemon`}
         />
         <meta name="creator" content="Bryan Florestal" />
-        <meta property="og:site_name" content="Next Pokédex"></meta>
         <meta name="theme-color" content="#483d8b" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
