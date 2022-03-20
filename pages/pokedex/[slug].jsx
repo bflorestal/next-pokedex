@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { Footer, Header } from "../../components/molecules";
-// import { PokemonType } from "../../components/atoms";
+import { PokemonType } from "../../components/atoms";
 
 import styles from "../../styles/Details.module.scss";
 
@@ -56,16 +56,14 @@ export default function Details({ data, pkmnNotFound }) {
             <h2 className={styles.details__name}>{name}</h2>
             <Image
               src={pkmnImg}
-              alt={name}
+              alt={nameFormat(name)}
               width={96}
               height={96}
               unoptimized
             />
             <div className={styles.types}>
               {types.map((e, index) => (
-                <a className={e.type.name} href="#" key={index}>
-                  {e.type.name}
-                </a>
+                <PokemonType type={e.type.name} key={index} />
               ))}
             </div>
           </div>
