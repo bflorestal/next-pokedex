@@ -40,6 +40,8 @@
   padding: 2rem 0;
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    padding: 2rem 1rem;
+
     &__left,
     &__center,
     &__right {
@@ -102,10 +104,7 @@
     flex-direction: column;
     gap: 0.85rem;
     @media screen and (max-width: 768px) {
-      #{$el}__wh,
-      .moves {
-        margin: 0 auto;
-      }
+      align-items: center;
     }
   }
 }
