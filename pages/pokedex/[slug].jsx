@@ -37,12 +37,6 @@ export default function Details({ data, pkmnNotFound }) {
       <Head>
         <title>Fiche de {nameFormat(name)} | Next Pokédex</title>
         <meta
-          name="description"
-          content={`Toutes les caractéristiques importantes de ${nameFormat(
-            name
-          )} sont présentes sur cette fiche.`}
-        />
-        <meta
           name="keywords"
           content={`Pokedex, pokedex, ${name}, nextjs, react, reactjs, pokemon`}
         />
