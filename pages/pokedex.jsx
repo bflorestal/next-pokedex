@@ -15,10 +15,6 @@ export default function Pokedex() {
 
   if (hasError) return <p>Une erreur est survenue...</p>;
 
-  useEffect(() => {
-    // router.push("/pokedex?test=1", undefined, { shallow: true });
-  }, []);
-
   return (
     <div className={styles.container}>
       <Head>
