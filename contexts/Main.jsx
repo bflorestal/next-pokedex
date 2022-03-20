@@ -12,6 +12,10 @@ const Provider = ({ children }) => {
   // const [value, setValue] = useState(searchParams.get("filter") || "");
   const [value, setValue] = useState("");
 
+  const handleChange = ({ target: { value } }) => {
+    setValue(value);
+  };
+
   const fetchApi = async () => {
     try {
       const response = await fetch(
@@ -37,11 +41,11 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     fetchApi();
-  }, []);
+  }, [value]);
 
   return (
     <MainContext.Provider
-      value={{ data, filteredData, hasError, isLoading, value }}
+      value={{ data, filteredData, handleChange, hasError, isLoading, value }}
     >
       {children}
     </MainContext.Provider>

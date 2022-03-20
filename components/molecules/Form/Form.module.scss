@@ -1,14 +1,31 @@
 .search {
-  background-color: #f5f8fa;
-  border: 1px solid #cbd6e2;
-  border-radius: 3px;
-  min-height: 27px;
-  height: 40px;
-  padding: 0 1rem;
-  margin: 1rem 0;
-  color: #33475b;
-  &:focus {
-    outline: none;
-    border-color: rgba(72, 61, 139, 0.8);
+  position: relative;
+  margin: 2rem 0;
+
+  &__bar {
+    position: relative;
+    background-color: #f5f8fa;
+    border: 1px solid #cbd6e2;
+    border-radius: 3px;
+    min-height: 27px;
+    height: 40px;
+    padding: 0 1rem;
+    color: #33475b;
+
+    &:focus {
+      outline: none;
+      border-color: rgba(72, 61, 139, 0.8);
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    right: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    opacity: 0.6;
   }
 }

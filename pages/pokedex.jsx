@@ -9,11 +9,15 @@ import { Loading } from "../components/atoms";
 import styles from "../styles/Pokedex.module.scss";
 
 export default function Pokedex() {
-  const { filteredData, hasError, isLoading } = useContext(MainContext);
-  /* const router = useRouter();
-  console.log(router.query); // search: "Pikachu" */
+  const { handleChange, filteredData, hasError, isLoading } =
+    useContext(MainContext);
+  const router = useRouter();
 
   if (hasError) return <p>Une erreur est survenue...</p>;
+
+  useEffect(() => {
+    // router.push("/pokedex?test=1", undefined, { shallow: true });
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -38,7 +42,7 @@ export default function Pokedex() {
       <main className={styles.main}>
         <h1 className={styles.title}>Pokédex</h1>
 
-        <Form />
+        <Form handleChange={handleChange} />
 
         {isLoading ? <Loading /> : <PokemonList data={filteredData} />}
       </main>
