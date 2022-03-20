@@ -5,12 +5,6 @@ import { useEffect, useState } from "react";
 import styles from "./Card.module.scss";
 
 export default function Card({ name, url }) {
-  // Récupère le nom du Pokémon et met la première lettre en majuscule
-  const [pkmnName, setPkmnName] = useState(name);
-  const formatName = () => {
-    setPkmnName(name.charAt(0).toUpperCase() + name.slice(1));
-  };
-
   // const keepHyphen = ["ho-oh", "porygon-z", "jangmo-o", "hakamo-o", "kommo-o"];
 
   // Sprite du Pokémon
@@ -27,23 +21,22 @@ export default function Card({ name, url }) {
   };
 
   useEffect(() => {
-    formatName();
     getSprite();
   }, []);
 
   return (
     <li className={styles.item}>
-      <Link href={`/pokedex/${name}`}>
+      <Link href={{ pathname: "/pokedex/[slug]", query: { slug: name } }}>
         <a>
           <div>
             <Image
               src={pkmnSprite}
-              alt={pkmnName}
+              alt={name}
               width={96}
               height={96}
               unoptimized
             />
-            <p>{pkmnName}</p>
+            <p>{name}</p>
           </div>
         </a>
       </Link>
