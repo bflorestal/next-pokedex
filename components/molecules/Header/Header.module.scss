@@ -5,6 +5,36 @@
   z-index: 1996;
   width: 100%;
 
+  &__open {
+    #{$el}__content {
+      .menu {
+        display: flex;
+      }
+
+      #{$el}__icon {
+        span:nth-child(1) {
+          top: 18px;
+          width: 0%;
+          left: 50%;
+        }
+
+        span:nth-child(2) {
+          transform: rotate(45deg);
+        }
+
+        span:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+
+        span:nth-child(4) {
+          top: 18px;
+          width: 0%;
+          left: 50%;
+        }
+      }
+    }
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
@@ -15,30 +45,54 @@
     .brand {
       &__link {
         font-weight: 600;
+        @media screen and (max-width: 768px) {
+          font-size: 1.25rem;
+        }
       }
     }
 
     .menu {
-      display: flex;
-      padding: 0;
+      display: none;
+      position: absolute;
+      top: 85px;
+      left: 0;
+      width: 100vw;
+      background-color: #fff;
 
-      /* temporaire */
-      @media screen and (max-width: 768px) {
-        display: none;
+      @media screen and (min-width: 768px) {
+        display: flex;
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
       }
 
       &__list {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        width: 100%;
+        @media screen and (min-width: 768px) {
+          flex-direction: row;
+        }
       }
 
       &__item {
         padding: 0 1.25rem;
       }
+
+      &__link {
+        transition: 0.4s;
+        @media screen and (max-width: 768px) {
+          display: block;
+          padding: 0.625rem 0;
+          text-align: center;
+          width: 100%;
+        }
+      }
     }
 
     #{$el}__icon {
-      display: none;
+      display: flex;
       position: relative;
       width: 60px;
       height: 45px;
@@ -48,9 +102,8 @@
       background: none;
       border: none;
 
-      /* temporaire */
-      @media screen and (max-width: 768px) {
-        display: flex;
+      @media screen and (min-width: 768px) {
+        display: none;
       }
 
       span {
@@ -58,7 +111,7 @@
         position: absolute;
         height: 9px;
         width: 100%;
-        background: #000;
+        background-color: #000;
         border-radius: 9px;
         opacity: 1;
         left: 0;
