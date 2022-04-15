@@ -1,12 +1,12 @@
 import Head from "next/head";
-import MainContext from "../contexts/Main";
-import { useContext, useEffect, useState } from "react";
+import MainContext from "../../contexts/Main";
+import { useContext } from "react";
 import { useRouter } from "next/router";
 
-import { Footer, Form, Header, PokemonList } from "../components/molecules";
-import { Loading } from "../components/atoms";
+import { Footer, Form, Header, PokemonList } from "../../components/molecules";
+import { Loading } from "../../components/atoms";
 
-import styles from "../styles/Pokedex.module.scss";
+import styles from "../../styles/Pokedex.module.scss";
 
 export default function Pokedex() {
   const { handleChange, filteredData, hasError, isLoading } =

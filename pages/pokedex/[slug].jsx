@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Footer, Header } from "../../components/molecules";
 import { PokemonType, Star } from "../../components/atoms";

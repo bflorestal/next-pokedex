@@ -9,6 +9,8 @@ const Provider = ({ children }) => {
 
   const [filteredData, setFilteredData] = useState([]);
 
+  const [types, setTypes] = useState([]);
+
   // const [value, setValue] = useState(searchParams.get("filter") || "");
   const [value, setValue] = useState("");
 
@@ -39,13 +41,41 @@ const Provider = ({ children }) => {
     }
   };
 
+  const fetchTypes = async () => {
+    try {
+      const response = await fetch("https://pokeapi.co/api/v2/type");
+      const pokemonTypes = await response.json();
+
+      setTypes(
+        pokemonTypes.results.filter(
+          (type) => type.name !== "unknown" && type.name !== "shadow"
+        )
+      );
+      setLoading(false);
+
+      return pokemonTypes;
+    } catch (err) {
+      setError(true);
+      throw err;
+    }
+  };
+
   useEffect(() => {
     fetchApi();
+    fetchTypes();
   }, [value]);
 
   return (
     <MainContext.Provider
-      value={{ data, filteredData, handleChange, hasError, isLoading, value }}
+      value={{
+        data,
+        filteredData,
+        handleChange,
+        hasError,
+        isLoading,
+        types,
+        value,
+      }}
     >
       {children}
     </MainContext.Provider>

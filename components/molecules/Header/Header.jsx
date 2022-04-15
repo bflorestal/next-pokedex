@@ -13,6 +13,11 @@ export default function Header() {
         <nav className={styles.menu}>
           <ul className={styles.menu__list}>
             <li className={styles.menu__item}>
+              <Link href="/types">
+                <a className={styles.menu__link}>Types</a>
+              </Link>
+            </li>
+            <li className={styles.menu__item}>
               <Link href="/pokedex">
                 <a className={styles.menu__link}>Pokédex</a>
               </Link>

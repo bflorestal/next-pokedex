@@ -1,3 +1,24 @@
+.types {
+  &__type {
+    // Type style
+    min-width: 90px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 3px 0;
+    text-decoration: none;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    text-transform: uppercase;
+    text-align: center;
+    transition: opacity 0.2s ease;
+    &:visited {
+      color: #fff;
+    }
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
 .normal {
   background-color: #a4acaf;
 }
