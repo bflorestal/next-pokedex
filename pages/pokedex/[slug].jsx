@@ -10,7 +10,7 @@ import { PokemonType, Star } from "../../components/atoms";
 import styles from "../../styles/Details.module.scss";
 
 export default function Details({ data, pkmnNotFound }) {
-  if (pkmnNotFound)
+  if (pkmnNotFound) {
     return (
       <>
         <p>Une erreur est survenue...</p>
@@ -19,6 +19,7 @@ export default function Details({ data, pkmnNotFound }) {
         </Link>
       </>
     );
+  }
 
   // Récupère les données voulues pour les afficher
   const { height, id, moves, name, sprites, stats, types, weight } = data;
