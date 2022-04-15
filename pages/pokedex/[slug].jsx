@@ -10,17 +10,6 @@ import { PokemonType, Star } from "../../components/atoms";
 import styles from "../../styles/Details.module.scss";
 
 export default function Details({ data, pkmnNotFound }) {
-  if (pkmnNotFound) {
-    return (
-      <>
-        <p>Une erreur est survenue...</p>
-        <Link href="/pokedex">
-          <a>Retourner au Pokédex</a>
-        </Link>
-      </>
-    );
-  }
-
   // Récupère les données voulues pour les afficher
   const { height, id, moves, name, sprites, stats, types, weight } = data;
 
@@ -55,10 +44,10 @@ export default function Details({ data, pkmnNotFound }) {
     }
   };
 
-  const favCheck = (elem) => {
-    if (!localStorage.getItem(name)) return;
-
-    setIsStarred(true);
+  const favCheck = (pkmnToCheck) => {
+    if (localStorage.getItem(pkmnToCheck)) {
+      setIsStarred(true);
+    }
   };
 
   useEffect(() => {
