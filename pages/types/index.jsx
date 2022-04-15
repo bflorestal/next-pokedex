@@ -18,7 +18,7 @@ export default function Types() {
         <title>Liste des types | Next Pokédex</title>
         <meta
           name="description"
-          content="Liste des types que peuvent avoir les Pokémon"
+          content="Liste des types que peuvent avoir les Pokémon. Sur la page de chaque type, vous pourrez consulter une liste de Pokémon."
         />
         <meta
           name="keywords"
