@@ -2,15 +2,23 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Footer, Header } from "../../components/molecules";
-import { PokemonType } from "../../components/atoms";
+import { PokemonType, Star } from "../../components/atoms";
 
 import styles from "../../styles/Details.module.scss";
 
 export default function Details({ data, pkmnNotFound }) {
-  if (pkmnNotFound) return <p>Une erreur est survenue...</p>;
+  if (pkmnNotFound)
+    return (
+      <>
+        <p>Une erreur est survenue...</p>
+        <Link href="/pokedex">
+          <a>Retourner au Pokédex</a>
+        </Link>
+      </>
+    );
 
   // Récupère les données voulues pour les afficher
   const { height, id, moves, name, sprites, stats, types, weight } = data;
@@ -19,7 +27,6 @@ export default function Details({ data, pkmnNotFound }) {
   const frontSprite = ({ front_default }) => {
     return front_default;
   };
-
   const pkmnImg = frontSprite(sprites);
 
   // Réécrit correctement le nom du Pokémon, les statistiques, les attaques...
@@ -31,6 +38,31 @@ export default function Details({ data, pkmnNotFound }) {
       .map((l) => l.charAt(0).toUpperCase() + l.substr(1))
       .join(" ");
   };
+
+  // Favoris
+  const [isStarred, setIsStarred] = useState(false);
+
+  const handleClick = (pkmnData) => {
+    const { name } = pkmnData;
+
+    if (localStorage.getItem(name)) {
+      localStorage.removeItem(name);
+      setIsStarred(false);
+    } else {
+      localStorage.setItem(name, JSON.stringify(pkmnData));
+      setIsStarred(true);
+    }
+  };
+
+  const favCheck = (elem) => {
+    if (!localStorage.getItem(name)) return;
+
+    setIsStarred(true);
+  };
+
+  useEffect(() => {
+    favCheck(name);
+  }, [isStarred]);
 
   return (
     <div className={styles.container}>
@@ -53,6 +85,10 @@ export default function Details({ data, pkmnNotFound }) {
         <div className={styles.details}>
           <div className={styles.details__left}>
             <h2 className={styles.details__name}>{name}</h2>
+            {/* Bouton Ajouter aux favoris et Retirer des favoris */}
+            <Star data={data} handleClick={handleClick}>
+              {isStarred}
+            </Star>
             <Image
               src={pkmnImg}
               alt={nameFormat(name)}
@@ -89,11 +125,6 @@ export default function Details({ data, pkmnNotFound }) {
               </ul>
             </div>
           </div>
-        </div>
-        <div className={styles.pkmnFavorites}>
-          {/*Événement onClick qui ajoute le Pokémon dans le localStorage*/}
-          <button className={styles.addFav}>Ajouter aux favoris</button>
-          {/*Bouton retirer des favoris (?)*/}
         </div>
       </main>
 
