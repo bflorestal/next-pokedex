@@ -85,11 +85,11 @@ export default function DetailsClient({ data }) {
             </ul>
           </div>
           <div className={styles.details__right}>
-            <div styles={styles.details__wh}>
+            <div className={styles.details__wh}>
               <p>Poids : {weight / 10} kg</p>
               <p>Taille : {height / 10} m</p>
             </div>
-            <div styles={styles.moves}>
+            <div className={styles.moves}>
               <p>Premières capacités :</p>
               <ul>
                 {moves.slice(0, 3).map((pkmnMove, index) => (
