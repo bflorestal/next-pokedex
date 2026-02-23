@@ -1,25 +1,21 @@
-import Head from "next/head";
+"use client";
+
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import { Footer, Header } from "../../components/molecules";
-import { PokemonType, Star } from "../../components/atoms";
+import { Footer, Header } from "../../../components/molecules";
+import { PokemonType, Star } from "../../../components/atoms";
 
-import styles from "../../styles/Details.module.scss";
+import styles from "../../../styles/Details.module.scss";
 
-export default function Details({ data, pkmnNotFound }) {
-  // Récupère les données voulues pour les afficher
-  const { height, id, moves, name, sprites, stats, types, weight } = data;
+export default function DetailsClient({ data }) {
+  const { height, moves, name, sprites, stats, types, weight } = data;
 
-  // Récupère le sprite de face du Pokémon
   const frontSprite = ({ front_default }) => {
     return front_default;
   };
   const pkmnImg = frontSprite(sprites);
 
-  // Réécrit correctement le nom du Pokémon, les statistiques, les attaques...
-  // HP, Attack, Defense, Special Attack, Special Defense, Speed
   const nameFormat = (name) => {
     if (name === "hp") return "HP";
     return name
@@ -28,7 +24,6 @@ export default function Details({ data, pkmnNotFound }) {
       .join(" ");
   };
 
-  // Favoris
   const [isStarred, setIsStarred] = useState(false);
 
   const handleClick = (pkmnData) => {
@@ -50,22 +45,12 @@ export default function Details({ data, pkmnNotFound }) {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     favCheck(name);
-  }, [isStarred]);
+  }, [name, isStarred]);
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Fiche de {nameFormat(name)} | Next Pokédex</title>
-        <meta
-          name="keywords"
-          content={`Pokedex, pokedex, ${name}, nextjs, react, reactjs, pokemon`}
-        />
-        <meta name="creator" content="Bryan Florestal" />
-        <meta name="theme-color" content="#483d8b" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <Header />
 
       <main className={styles.main}>
@@ -74,7 +59,6 @@ export default function Details({ data, pkmnNotFound }) {
         <div className={styles.details}>
           <div className={styles.details__left}>
             <h2 className={styles.details__name}>{name}</h2>
-            {/* Bouton Ajouter aux favoris et Retirer des favoris */}
             <Star data={data} handleClick={handleClick}>
               {isStarred}
             </Star>
@@ -120,25 +104,4 @@ export default function Details({ data, pkmnNotFound }) {
       <Footer />
     </div>
   );
-}
-
-export async function getServerSideProps({ query }) {
-  const pkmnName = query.slug;
-
-  try {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${pkmnName}`
-    );
-    if (response.status === 404) {
-      const pkmnNotFound = true;
-      return { props: { pkmnNotFound } };
-    }
-    const data = await response.json();
-
-    return {
-      props: { data },
-    };
-  } catch (err) {
-    throw err;
-  }
 }

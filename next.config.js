@@ -1,20 +1,23 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    outputStandalone: true,
-  },
-  reactStrictMode: true,
-};
-
 const path = require("path");
 
-module.exports = {
+const nextConfig = {
   images: {
-    domains: ["pokeapi.co", "raw.githubusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "pokeapi.co",
+      },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+      },
+    ],
   },
-  nextConfig,
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
 };
+
+module.exports = nextConfig;

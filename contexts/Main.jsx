@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useEffect, useState } from "react";
 
 const MainContext = createContext({ value: "" });
@@ -63,6 +65,7 @@ const Provider = ({ children }) => {
   useEffect(() => {
     fetchApi();
     fetchTypes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return (
