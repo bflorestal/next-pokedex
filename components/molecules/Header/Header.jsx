@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import styles from "./Header.module.scss";
 
@@ -10,34 +12,32 @@ export default function Header() {
     setNavToggled(!navToggled);
   };
 
-  useEffect(() => {}, [navToggled]);
-
   return (
     <header
       className={`${styles.header} ${navToggled ? styles.header__open : ""}`}
     >
       <section className={styles.header__content}>
         <div className={styles.brand}>
-          <Link href="/">
-            <a className={styles.brand__link}>Next Pokédex</a>
+          <Link href="/" className={styles.brand__link}>
+            Next Pokédex
           </Link>
         </div>
 
         <nav className={styles.menu}>
           <ul className={styles.menu__list}>
             <li className={styles.menu__item}>
-              <Link href="/pokedex">
-                <a className={styles.menu__link}>Pokédex</a>
+              <Link href="/pokedex" className={styles.menu__link}>
+                Pokédex
               </Link>
             </li>
             <li className={styles.menu__item}>
-              <Link href="/types">
-                <a className={styles.menu__link}>Types</a>
+              <Link href="/types" className={styles.menu__link}>
+                Types
               </Link>
             </li>
             <li className={styles.menu__item}>
-              <Link href="/favoris">
-                <a className={styles.menu__link}>Favoris</a>
+              <Link href="/favoris" className={styles.menu__link}>
+                Favoris
               </Link>
             </li>
           </ul>

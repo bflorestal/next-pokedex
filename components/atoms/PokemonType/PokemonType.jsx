@@ -5,8 +5,8 @@ import styles from "./PokemonType.module.scss";
 
 export default function PokemonType({ type }) {
   return (
-    <Link href={`/types/${type}`}>
-      <a className={`${styles.types__type} ${styles[type]}`}>{type}</a>
+    <Link href={`/types/${type}`} className={`${styles.types__type} ${styles[type]}`}>
+      {type}
     </Link>
   );
 }
