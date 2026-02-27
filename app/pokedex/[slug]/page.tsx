@@ -7,7 +7,7 @@ const nameFormat = (name: string): string => {
   if (name === "hp") return "HP";
   return name
     .split("-")
-    .map((l) => l.charAt(0).toUpperCase() + l.substr(1))
+    .map((l) => l.charAt(0).toUpperCase() + l.slice(1))
     .join(" ");
 };
 

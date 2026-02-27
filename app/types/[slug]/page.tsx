@@ -11,7 +11,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const currentType = slug
     .split(" ")
-    .map((l) => l.charAt(0).toUpperCase() + l.substr(1))
+    .map((l) => l.charAt(0).toUpperCase() + l.slice(1))
     .join(" ");
 
   return {
