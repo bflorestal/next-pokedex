@@ -1,6 +1,13 @@
+import type { ChangeEvent } from "react";
+
 import styles from "./Form.module.scss";
 
-export default function Form({ handleChange, value }) {
+interface FormProps {
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+}
+
+export default function Form({ handleChange, value }: FormProps) {
   return (
     <div className={styles.search}>
       <input
@@ -17,7 +24,7 @@ export default function Form({ handleChange, value }) {
         onClick={() => {
           alert("Bravo ! Tu as gagné un iPhone 11 !");
         }}
-      ></input>
+      />
     </div>
   );
 }

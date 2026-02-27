@@ -8,26 +8,33 @@ import { useContext, useEffect, useState } from "react";
 import { Footer, Header } from "../../components/molecules";
 import { Loading } from "../../components/atoms";
 
+import { FavoritePokemonSchema, type FavoritePokemon } from "../../lib/schemas";
+
 import styles from "../../styles/Favoris.module.scss";
 
 export default function Favoris() {
   const { isLoading } = useContext(MainContext);
-
-  const [favList, setFavList] = useState([]);
+  const [favList, setFavList] = useState<FavoritePokemon[]>([]);
 
   useEffect(() => {
-    const allStorage = () => {
-      let values = [],
-        keys = Object.keys(localStorage),
-        i = keys.length;
+    const allStorage = (): FavoritePokemon[] => {
+      const values: FavoritePokemon[] = [];
+      const keys = Object.keys(localStorage);
+      let i = keys.length;
 
       while (i--) {
-        values.push(JSON.parse(localStorage.getItem(keys[i])));
+        try {
+          const raw: unknown = JSON.parse(localStorage.getItem(keys[i]) ?? "");
+          const result = FavoritePokemonSchema.safeParse(raw);
+          if (result.success) {
+            values.push(result.data);
+          }
+        } catch {
+          // skip invalid entries
+        }
       }
 
-      return values
-        .filter((pokemon) => pokemon.name)
-        .sort((a, b) => a.id > b.id);
+      return values.sort((a, b) => a.id - b.id);
     };
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -56,7 +63,7 @@ export default function Favoris() {
                   <Link href={`/pokedex/${pokemon.name}`}>
                     <div>
                       <Image
-                        src={pokemon.sprites.front_default}
+                        src={pokemon.sprites.front_default ?? ""}
                         alt={pokemon.name}
                         width={96}
                         height={96}

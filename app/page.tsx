@@ -1,10 +1,11 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import { Footer, Header } from "../components/molecules";
 
 import styles from "../styles/Home.module.scss";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Accueil | Next Pokédex",
   openGraph: {
     siteName: "Next Pokédex",

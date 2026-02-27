@@ -6,13 +6,16 @@ import { useEffect, useState } from "react";
 
 import styles from "./Card.module.scss";
 
-export default function Card({ name, url }) {
-  // Sprite du Pokémon
+interface CardProps {
+  name: string;
+  url: string;
+}
+
+export default function Card({ name, url }: CardProps) {
   const [pkmnSprite, setPkmnSprite] = useState(url);
 
   useEffect(() => {
     const getSprite = () => {
-      // ID = https://pokeapi.co/api/v2/pokemon/XXX <-
       const pkmnId = url
         .split("/")
         .filter((e) => e)
@@ -21,6 +24,7 @@ export default function Card({ name, url }) {
         `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmnId}.png`
       );
     };
+
     getSprite();
   }, [url]);
 
