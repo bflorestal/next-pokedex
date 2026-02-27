@@ -1,6 +1,14 @@
+import type { PokemonDetail } from "../../../lib/schemas";
+
 import styles from "./Star.module.scss";
 
-export default function Star({ children, data, handleClick }) {
+interface StarProps {
+  children: boolean;
+  data: PokemonDetail;
+  handleClick: (data: PokemonDetail) => void;
+}
+
+export default function Star({ children, data, handleClick }: StarProps) {
   return (
     <svg
       height="25"

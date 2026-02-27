@@ -6,9 +6,19 @@ import { useContext } from "react";
 import { Footer, Header, PokemonList } from "../../../components/molecules";
 import { Loading } from "../../../components/atoms";
 
+import type { NamedAPIResource, TypeDetailResponse } from "../../../lib/schemas";
+
 import styles from "../../../styles/Pokedex.module.scss";
 
-export default function TypeDetailsClient({ data, filteredData }) {
+interface TypeDetailsClientProps {
+  data: TypeDetailResponse;
+  filteredData: NamedAPIResource[];
+}
+
+export default function TypeDetailsClient({
+  data,
+  filteredData,
+}: TypeDetailsClientProps) {
   const { hasError, isLoading } = useContext(MainContext);
 
   if (hasError) return <p>Une erreur est survenue...</p>;

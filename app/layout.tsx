@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Provider as MainProvider } from "../contexts/Main";
 
 import "../styles/globals.scss";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Next Pokédex",
   description:
     "Pokédex en Next.js avec la liste des Pokémon, leurs caractéristiques ainsi que la liste des types.",
@@ -16,7 +18,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">
       <body>

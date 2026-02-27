@@ -6,27 +6,30 @@ import { useEffect, useState } from "react";
 import { Footer, Header } from "../../../components/molecules";
 import { PokemonType, Star } from "../../../components/atoms";
 
+import type { PokemonDetail } from "../../../lib/schemas";
+
 import styles from "../../../styles/Details.module.scss";
 
-export default function DetailsClient({ data }) {
+interface DetailsClientProps {
+  data: PokemonDetail;
+}
+
+export default function DetailsClient({ data }: DetailsClientProps) {
   const { height, moves, name, sprites, stats, types, weight } = data;
 
-  const frontSprite = ({ front_default }) => {
-    return front_default;
-  };
-  const pkmnImg = frontSprite(sprites);
+  const pkmnImg = sprites.front_default ?? "";
 
-  const nameFormat = (name) => {
+  const nameFormat = (name: string): string => {
     if (name === "hp") return "HP";
     return name
       .split("-")
-      .map((l) => l.charAt(0).toUpperCase() + l.substr(1))
+      .map((l) => l.charAt(0).toUpperCase() + l.slice(1))
       .join(" ");
   };
 
   const [isStarred, setIsStarred] = useState(false);
 
-  const handleClick = (pkmnData) => {
+  const handleClick = (pkmnData: PokemonDetail) => {
     const { name } = pkmnData;
 
     if (localStorage.getItem(name)) {
@@ -38,7 +41,7 @@ export default function DetailsClient({ data }) {
     }
   };
 
-  const favCheck = (pkmnToCheck) => {
+  const favCheck = (pkmnToCheck: string) => {
     if (localStorage.getItem(pkmnToCheck)) {
       setIsStarred(true);
     }

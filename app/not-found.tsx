@@ -1,8 +1,9 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 import styles from "../styles/ErrorPage.module.scss";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Page non trouvée | Next Pokédex",
 };
 
