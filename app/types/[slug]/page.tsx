@@ -28,7 +28,7 @@ export default async function TypeDetails({
 }) {
   const { slug } = await params;
   const response = await fetch(`https://pokeapi.co/api/v2/type/${slug}`, {
-    cache: "no-store",
+    next: { revalidate: 86400 },
   });
 
   if (response.status === 404) {

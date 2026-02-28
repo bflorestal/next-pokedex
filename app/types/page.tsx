@@ -6,13 +6,15 @@ import { PokemonType } from "../../components/atoms";
 
 import styles from "../../styles/Types.module.scss";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Types | Next Pokédex",
 };
 
 export default async function Types() {
   const response = await fetch("https://pokeapi.co/api/v2/type", {
-    cache: "no-store",
+    next: { revalidate: 86400 },
   });
 
   if (!response.ok) return <p>Une erreur est survenue...</p>;

@@ -32,7 +32,7 @@ export default async function Details({
 }) {
   const { slug } = await params;
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${slug}`, {
-    cache: "no-store",
+    next: { revalidate: 86400 },
   });
 
   if (response.status === 404) {
