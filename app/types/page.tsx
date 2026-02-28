@@ -7,8 +7,6 @@ import { PokemonType } from "../../components/atoms";
 
 import styles from "../../styles/Types.module.scss";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "Types | Next Pokédex",
 };

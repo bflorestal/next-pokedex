@@ -52,11 +52,11 @@ export default function PokedexClient() {
 
   const filteredData = useMemo(() => {
     if (!data) return [];
-    if (!search) return data.results;
+    if (!inputValue) return data.results;
     return data.results.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(search.toLowerCase())
+      pokemon.name.toLowerCase().includes(inputValue.toLowerCase())
     );
-  }, [data, search]);
+  }, [data, inputValue]);
 
   if (isError) return <p>Une erreur est survenue...</p>;
 
