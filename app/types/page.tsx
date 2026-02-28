@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { REVALIDATE_SECONDS } from "../../lib/constants";
 import { TypeListResponseSchema } from "../../lib/schemas";
 
 import { Footer, Header } from "../../components/molecules";
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 export default async function Types() {
   const response = await fetch("https://pokeapi.co/api/v2/type", {
-    next: { revalidate: 86400 },
+    next: { revalidate: REVALIDATE_SECONDS },
   });
 
   if (!response.ok) return <p>Une erreur est survenue...</p>;

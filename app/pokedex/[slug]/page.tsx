@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { REVALIDATE_SECONDS } from "../../../lib/constants";
 import { PokemonDetailSchema } from "../../../lib/schemas";
 import DetailsClient from "./details-client";
 
@@ -32,7 +33,7 @@ export default async function Details({
 }) {
   const { slug } = await params;
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${slug}`, {
-    next: { revalidate: 86400 },
+    next: { revalidate: REVALIDATE_SECONDS },
   });
 
   if (response.status === 404) {
