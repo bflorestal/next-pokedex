@@ -13,7 +13,7 @@ export default function Form({ handleChange, value }: FormProps) {
       <input
         type="text"
         className={styles.search__bar}
-        defaultValue={value}
+        value={value ?? ""}
         onChange={handleChange}
         placeholder="Rechercher..."
       />
@@ -21,9 +21,6 @@ export default function Form({ handleChange, value }: FormProps) {
         type="submit"
         className={styles.search__btn}
         value="🔎"
-        onClick={() => {
-          alert("Bravo ! Tu as gagné un iPhone 11 !");
-        }}
       />
     </div>
   );

@@ -1,10 +1,6 @@
 "use client";
 
-import MainContext from "../../../contexts/Main";
-import { useContext } from "react";
-
 import { Footer, Header, PokemonList } from "../../../components/molecules";
-import { Loading } from "../../../components/atoms";
 
 import type { NamedAPIResource, TypeDetailResponse } from "../../../lib/schemas";
 
@@ -19,10 +15,6 @@ export default function TypeDetailsClient({
   data,
   filteredData,
 }: TypeDetailsClientProps) {
-  const { hasError, isLoading } = useContext(MainContext);
-
-  if (hasError) return <p>Une erreur est survenue...</p>;
-
   return (
     <div className={styles.container}>
       <Header />
@@ -30,7 +22,7 @@ export default function TypeDetailsClient({
       <main className={styles.main}>
         <h1 className={styles.title}>Pokédex</h1>
 
-        {isLoading ? <Loading /> : <PokemonList data={filteredData} />}
+        <PokemonList data={filteredData} />
       </main>
 
       <Footer />

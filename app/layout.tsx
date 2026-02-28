@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Provider as MainProvider } from "../contexts/Main";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+import QueryProvider from "../lib/query-provider";
 
 import "../styles/globals.scss";
 
@@ -22,7 +23,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">
       <body>
-        <MainProvider>{children}</MainProvider>
+        <QueryProvider>
+          <NuqsAdapter>{children}</NuqsAdapter>
+        </QueryProvider>
       </body>
     </html>
   );
