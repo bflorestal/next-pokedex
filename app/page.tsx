@@ -1,8 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { Footer, Header } from "../components/molecules";
-
 import styles from "../styles/Home.module.scss";
 
 export const metadata: Metadata = {
@@ -14,19 +12,12 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Header />
+    <div className={styles.heroWrapper}>
+      <h1 className={styles.title}>Bienvenue sur mon Pokédex en Next.js !</h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Bienvenue sur mon Pokédex en Next.js !</h1>
-
-        <p className={styles.description}>
-          Commencez par{" "}
-          <Link href="/pokedex">chercher un Pokémon</Link>
-        </p>
-      </main>
-
-      <Footer />
+      <p className={styles.description}>
+        Commencez par <Link href="/pokedex">chercher un Pokémon</Link>
+      </p>
     </div>
   );
 }

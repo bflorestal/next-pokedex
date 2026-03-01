@@ -1,10 +1,12 @@
 .footer {
   display: flex;
-  flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  border-top: 3px solid var(--poke-red);
   justify-content: center;
   align-items: center;
+  background: var(--poke-charcoal);
+  color: var(--poke-white);
+
   @media screen and (max-width: 768px) {
     font-size: 0.85rem;
   }
@@ -15,5 +17,7 @@
     align-items: center;
     flex-grow: 1;
     margin: 0;
+    font-weight: 400;
+    opacity: 0.9;
   }
 }

@@ -1,22 +1,14 @@
-.main {
-  padding: 6rem 0 2rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  @media screen and (max-width: 768px) {
-    padding-top: 8rem;
-  }
-}
-
 .title {
+  font-family: "Press Start 2P", cursive;
   margin: 0;
-  line-height: 1.15;
-  font-size: 3rem;
+  line-height: 1.4;
+  font-size: 2rem;
   text-align: center;
+  color: var(--poke-red);
+  text-shadow: 2px 2px 0 var(--poke-yellow);
+
   @media screen and (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -26,7 +18,7 @@
   align-items: center;
   flex-direction: row;
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   font-size: 1rem;
   padding: 2rem 0;
 
@@ -34,11 +26,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    row-gap: 1rem;
+    row-gap: 1.2rem;
     width: 100%;
 
     li {
       width: 25%;
+
       @media screen and (max-width: 768px) {
         width: 33%;
       }

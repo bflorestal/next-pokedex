@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { Footer, Header } from "../../components/molecules";
-
 import { FavoritePokemonSchema, type FavoritePokemon } from "../../lib/schemas";
 
 import styles from "../../styles/Favoris.module.scss";
@@ -44,15 +42,15 @@ export default function Favoris() {
   };
 
   return (
-    <div className={styles.container}>
-      <Header />
+    <>
+      <h1 className={styles.title}>Favoris</h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Favoris</h1>
-
-        <div className={styles.favContainer}>
-          <ul className={styles.list}>
-            {favList.map((pokemon) => (
+      <div className={styles.favContainer}>
+        <ul className={styles.list}>
+          {favList.length === 0 ? (
+            <p className={styles.emptyMessage}>Aucun favori pour le moment.</p>
+          ) : (
+            favList.map((pokemon) => (
               <li className={styles.item} key={pokemon.name}>
                 <Link href={`/pokedex/${pokemon.name}`}>
                   <div>
@@ -67,16 +65,14 @@ export default function Favoris() {
                   </div>
                 </Link>
               </li>
-            ))}
-          </ul>
-        </div>
+            ))
+          )}
+        </ul>
+      </div>
 
-        <button className={styles.clearFav} onClick={() => emptyFav()}>
-          Vider la liste des favoris
-        </button>
-      </main>
-
-      <Footer />
-    </div>
+      <button className={styles.clearFav} onClick={() => emptyFav()}>
+        Vider la liste des favoris
+      </button>
+    </>
   );
 }

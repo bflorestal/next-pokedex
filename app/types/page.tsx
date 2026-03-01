@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { REVALIDATE_SECONDS } from "../../lib/constants";
 import { TypeListResponseSchema } from "../../lib/schemas";
 
-import { Footer, Header } from "../../components/molecules";
 import { PokemonType } from "../../components/atoms";
 
 import styles from "../../styles/Types.module.scss";
@@ -31,26 +30,20 @@ export default async function Types() {
   );
 
   return (
-    <div className={styles.container}>
-      <Header />
+    <>
+      <h1 className={styles.title}>Types</h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Types</h1>
-
-        <div className={styles.typesContainer}>
-          <ul className={styles.typeList}>
-            {types.map((e, index) => (
-              <li key={index}>
-                <div className={styles.types}>
-                  <PokemonType type={e.name} />
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+      <div className={styles.typesContainer}>
+        <ul className={styles.typeList}>
+          {types.map((e, index) => (
+            <li key={index}>
+              <div className={styles.types}>
+                <PokemonType type={e.name} />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

@@ -1,80 +1,87 @@
-/*
-.container {
-  background-color: #404040;
-  color: #fff;
-}
-*/
+.title {
+  font-family: "Press Start 2P", cursive;
+  margin: 0;
+  line-height: 1.4;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--poke-red);
+  text-shadow: 2px 2px 0 var(--poke-yellow);
 
-.main {
-  /* min-height: 100vh; */
-  padding: 6rem 0 2rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   @media screen and (max-width: 768px) {
-    padding-top: 8rem;
+    font-size: 1.3rem;
   }
+}
 
-  .title {
-    margin: 0;
-    line-height: 1.15;
-    font-size: 3rem;
-    text-align: center;
-    @media screen and (max-width: 768px) {
-      font-size: 2rem;
-    }
-  }
+.favContainer {
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem 0 2rem;
 
-  .favContainer {
-    width: 100%;
-    max-width: 900px;
-    padding: 2rem 0 0;
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 
-    .list {
+    .item {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
       justify-content: center;
+      width: 25%;
+      margin-bottom: 2rem;
 
-      .item {
+      @media screen and (max-width: 768px) {
+        width: 33%;
+      }
+
+      div {
         display: flex;
         justify-content: center;
-        width: 25%;
-        margin-bottom: 2rem;
-        @media screen and (max-width: 768px) {
-          width: 33%;
+        align-items: center;
+        flex-direction: column;
+        background: var(--poke-white);
+        padding: 1rem;
+        border-radius: 16px;
+        border: 2px solid var(--poke-border);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 0 var(--poke-border);
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 0 rgba(220, 10, 45, 0.15);
+          border-color: var(--poke-red);
         }
 
-        div {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-
-          p {
-            font-weight: 600;
-            margin-top: 0.75rem;
-            text-align: center;
-            text-transform: capitalize;
-          }
+        p {
+          font-weight: 600;
+          margin-top: 0.75rem;
+          text-align: center;
+          text-transform: capitalize;
+          font-size: 0.85rem;
         }
       }
     }
   }
+}
 
-  .clearFav {
-    background-color: DarkRed;
-    border: none;
-    border-radius: 5px;
-    padding: 15px 10px;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    &:hover {
-      background-color: rgb(192, 0, 0);
-    }
+.clearFav {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.65rem;
+  background-color: var(--poke-red);
+  border: none;
+  border-radius: 50px;
+  padding: 16px 24px;
+  color: var(--poke-white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0 var(--poke-dark-red);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--poke-dark-red);
+  }
+
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--poke-dark-red);
   }
 }

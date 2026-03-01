@@ -4,26 +4,37 @@
 
   &__bar {
     position: relative;
-    background-color: #f5f8fa;
-    border: 1px solid #cbd6e2;
-    border-radius: 3px;
+    background-color: var(--poke-white);
+    border: 3px solid var(--poke-border);
+    border-radius: 50px;
     min-height: 27px;
-    height: 40px;
-    padding: 0 1rem 0 2.5rem;
-    color: #33475b;
+    height: 48px;
+    padding: 0 1.25rem 0 2.75rem;
+    color: var(--poke-charcoal);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    width: 320px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 var(--poke-border);
 
     &:focus {
       outline: none;
-      border-color: rgba(72, 61, 139, 0.8);
+      border-color: var(--poke-red);
+      box-shadow: 0 4px 0 rgba(220, 10, 45, 0.2);
+    }
+
+    &::placeholder {
+      color: var(--poke-grey);
     }
   }
 
   &__icon {
     position: absolute;
-    left: 0.75rem;
+    left: 1rem;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.5;
+    color: var(--poke-red);
   }
 }

@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --poke-red: #DC0A2D;
+  --poke-dark-red: #A00020;
+  --poke-white: #FFFFFF;
+  --poke-cream: #FFF8F0;
+  --poke-charcoal: #2D2D2D;
+  --poke-grey: #919191;
+  --poke-blue: #3B4CCA;
+  --poke-yellow: #FFDE00;
+  --poke-yellow-dark: #D4A800;
+  --poke-light-grey: #F2F2F2;
+  --poke-border: #E0D8CF;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -6,9 +22,10 @@
 
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, Segoe UI, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Outfit', sans-serif;
   scroll-behavior: smooth;
+  background-color: var(--poke-cream);
+  color: var(--poke-charcoal);
 }
 
 a {
@@ -18,4 +35,44 @@ a {
 
 ul {
   list-style: none;
+}
+
+/* Pokéball decorative background */
+body::before {
+  content: '';
+  position: fixed;
+  top: -30vh;
+  right: -15vw;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    var(--poke-red) 0%,
+    var(--poke-red) 48%,
+    var(--poke-charcoal) 48%,
+    var(--poke-charcoal) 52%,
+    var(--poke-white) 52%,
+    var(--poke-white) 100%
+  );
+  opacity: 0.04;
+  z-index: -1;
+  pointer-events: none;
+}
+
+::selection {
+  background-color: var(--poke-red);
+  color: var(--poke-white);
+}
+
+/* Pixel-style scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--poke-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--poke-red);
+  border-radius: 2px;
 }

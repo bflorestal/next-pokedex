@@ -1,18 +1,24 @@
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
+.content {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   @media screen and (max-width: 768px) {
     text-align: center;
   }
 
   h1 {
+    font-family: "Press Start 2P", cursive;
     font-size: 4rem;
     margin-bottom: 1rem;
+    color: var(--poke-red);
+    text-shadow: 4px 4px 0 var(--poke-yellow);
+
+    @media screen and (max-width: 768px) {
+      font-size: 2.5rem;
+    }
   }
 
   h2,
@@ -21,20 +27,30 @@
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--poke-charcoal);
   }
 
   h6 {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    color: var(--poke-grey);
+    font-weight: 400;
   }
 
   a {
-    color: #0070f3;
-    text-decoration: none;
-    &:hover,
-    &:focus,
-    &:active {
-      text-decoration: underline;
+    display: inline-block;
+    margin-top: 1.5rem;
+    background: var(--poke-red);
+    color: var(--poke-white);
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 var(--poke-dark-red);
+
+    &:hover {
+      transform: translateY(-2px);
     }
   }
 }

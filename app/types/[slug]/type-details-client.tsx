@@ -1,8 +1,9 @@
-"use client";
+import { PokemonList } from "../../../components/molecules";
 
-import { Footer, Header, PokemonList } from "../../../components/molecules";
-
-import type { NamedAPIResource, TypeDetailResponse } from "../../../lib/schemas";
+import type {
+  NamedAPIResource,
+  TypeDetailResponse,
+} from "../../../lib/schemas";
 
 import styles from "../../../styles/Pokedex.module.scss";
 
@@ -16,16 +17,10 @@ export default function TypeDetailsClient({
   filteredData,
 }: TypeDetailsClientProps) {
   return (
-    <div className={styles.container}>
-      <Header />
+    <>
+      <h1 className={styles.title}>Pokédex</h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Pokédex</h1>
-
-        <PokemonList data={filteredData} />
-      </main>
-
-      <Footer />
-    </div>
+      <PokemonList data={filteredData} />
+    </>
   );
 }

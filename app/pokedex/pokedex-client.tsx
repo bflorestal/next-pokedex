@@ -5,7 +5,7 @@ import { useQueryState, parseAsString } from "nuqs";
 import { useMemo, useState, useEffect, type ChangeEvent } from "react";
 import { PokemonListResponseSchema } from "../../lib/schemas";
 
-import { Footer, Form, Header, PokemonList } from "../../components/molecules";
+import { Form, PokemonList } from "../../components/molecules";
 import { Loading } from "../../components/atoms";
 
 import styles from "../../styles/Pokedex.module.scss";
@@ -24,7 +24,7 @@ function useDebounce(value: string, delay: number) {
 export default function PokedexClient() {
   const [search, setSearch] = useQueryState(
     "search",
-    parseAsString.withDefault("")
+    parseAsString.withDefault(""),
   );
   const [inputValue, setInputValue] = useState(search);
   const debouncedValue = useDebounce(inputValue, 300);
@@ -41,7 +41,7 @@ export default function PokedexClient() {
     queryKey: ["pokemon-list"],
     queryFn: async () => {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/?limit=3000"
+        "https://pokeapi.co/api/v2/pokemon/?limit=3000",
       );
       const json: unknown = await response.json();
       const result = PokemonListResponseSchema.safeParse(json);
@@ -54,25 +54,19 @@ export default function PokedexClient() {
     if (!data) return [];
     if (!inputValue) return data.results;
     return data.results.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(inputValue.toLowerCase())
+      pokemon.name.toLowerCase().includes(inputValue.toLowerCase()),
     );
   }, [data, inputValue]);
 
   if (isError) return <p>Une erreur est survenue...</p>;
 
   return (
-    <div className={styles.container}>
-      <Header />
+    <>
+      <h1 className={styles.title}>Pokédex</h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Pokédex</h1>
+      <Form handleChange={handleChange} value={inputValue} />
 
-        <Form handleChange={handleChange} value={inputValue} />
-
-        {isLoading ? <Loading /> : <PokemonList data={filteredData} />}
-      </main>
-
-      <Footer />
-    </div>
+      {isLoading ? <Loading /> : <PokemonList data={filteredData} />}
+    </>
   );
 }
