@@ -24,7 +24,10 @@ export default async function Types() {
   if (!result.success) return <p>Une erreur est survenue...</p>;
 
   const types = result.data.results.filter(
-    (type) => type.name !== "unknown" && type.name !== "shadow"
+    (type) =>
+      type.name !== "unknown" &&
+      type.name !== "shadow" &&
+      type.name !== "stellar",
   );
 
   return (
