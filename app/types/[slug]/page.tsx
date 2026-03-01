@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { REVALIDATE_SECONDS } from "../../../lib/constants";
 import { TypeDetailResponseSchema } from "../../../lib/schemas";
 import TypeDetailsClient from "./type-details-client";
 
@@ -28,7 +29,7 @@ export default async function TypeDetails({
 }) {
   const { slug } = await params;
   const response = await fetch(`https://pokeapi.co/api/v2/type/${slug}`, {
-    cache: "no-store",
+    next: { revalidate: REVALIDATE_SECONDS },
   });
 
   if (response.status === 404) {

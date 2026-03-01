@@ -1,17 +1,31 @@
-"use client";
-
-import MainContext from "../../contexts/Main";
-import { useContext } from "react";
+import type { Metadata } from "next";
+import { REVALIDATE_SECONDS } from "../../lib/constants";
+import { TypeListResponseSchema } from "../../lib/schemas";
 
 import { Footer, Header } from "../../components/molecules";
-import { Loading, PokemonType } from "../../components/atoms";
+import { PokemonType } from "../../components/atoms";
 
 import styles from "../../styles/Types.module.scss";
 
-export default function Types() {
-  const { hasError, isLoading, types } = useContext(MainContext);
+export const metadata: Metadata = {
+  title: "Types | Next Pokédex",
+};
 
-  if (hasError) return <p>Une erreur est survenue...</p>;
+export default async function Types() {
+  const response = await fetch("https://pokeapi.co/api/v2/type", {
+    next: { revalidate: REVALIDATE_SECONDS },
+  });
+
+  if (!response.ok) return <p>Une erreur est survenue...</p>;
+
+  const json: unknown = await response.json();
+  const result = TypeListResponseSchema.safeParse(json);
+
+  if (!result.success) return <p>Une erreur est survenue...</p>;
+
+  const types = result.data.results.filter(
+    (type) => type.name !== "unknown" && type.name !== "shadow"
+  );
 
   return (
     <div className={styles.container}>
@@ -20,21 +34,17 @@ export default function Types() {
       <main className={styles.main}>
         <h1 className={styles.title}>Types</h1>
 
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <div className={styles.typesContainer}>
-            <ul className={styles.typeList}>
-              {types.map((e, index) => (
-                <li key={index}>
-                  <div className={styles.types}>
-                    <PokemonType type={e.name} />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div className={styles.typesContainer}>
+          <ul className={styles.typeList}>
+            {types.map((e, index) => (
+              <li key={index}>
+                <div className={styles.types}>
+                  <PokemonType type={e.name} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </main>
 
       <Footer />

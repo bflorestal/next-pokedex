@@ -2,18 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import MainContext from "../../contexts/Main";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Footer, Header } from "../../components/molecules";
-import { Loading } from "../../components/atoms";
 
 import { FavoritePokemonSchema, type FavoritePokemon } from "../../lib/schemas";
 
 import styles from "../../styles/Favoris.module.scss";
 
 export default function Favoris() {
-  const { isLoading } = useContext(MainContext);
   const [favList, setFavList] = useState<FavoritePokemon[]>([]);
 
   useEffect(() => {
@@ -53,30 +50,26 @@ export default function Favoris() {
       <main className={styles.main}>
         <h1 className={styles.title}>Favoris</h1>
 
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <div className={styles.favContainer}>
-            <ul className={styles.list}>
-              {favList.map((pokemon) => (
-                <li className={styles.item} key={pokemon.name}>
-                  <Link href={`/pokedex/${pokemon.name}`}>
-                    <div>
-                      <Image
-                        src={pokemon.sprites.front_default ?? ""}
-                        alt={pokemon.name}
-                        width={96}
-                        height={96}
-                        unoptimized
-                      />
-                      <p>{pokemon.name}</p>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div className={styles.favContainer}>
+          <ul className={styles.list}>
+            {favList.map((pokemon) => (
+              <li className={styles.item} key={pokemon.name}>
+                <Link href={`/pokedex/${pokemon.name}`}>
+                  <div>
+                    <Image
+                      src={pokemon.sprites.front_default ?? ""}
+                      alt={pokemon.name}
+                      width={96}
+                      height={96}
+                      unoptimized
+                    />
+                    <p>{pokemon.name}</p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <button className={styles.clearFav} onClick={() => emptyFav()}>
           Vider la liste des favoris

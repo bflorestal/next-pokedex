@@ -1,0 +1,2 @@
+export const REVALIDATE_SECONDS = 7 * 24 * 60 * 60;
+export const REVALIDATE_MS = REVALIDATE_SECONDS * 1000;
